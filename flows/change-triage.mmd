@@ -1,0 +1,16 @@
+%% Change triage: incident -> triage -> change -> validation -> deploy
+flowchart TD
+  Incident --> Triage
+  Triage -->|Minor| Monitor
+  Triage -->|Major| ChangeRequest
+  ChangeRequest --> Validation
+  Validation --> Deploy
+  Deploy --> Operations
+
+flowchart LR
+  I[Incident] --> T[Triage]
+  T --> C[Classify] --> MIN[Minor] 
+  C --> MAJ[Major]
+  MIN --> Monitor
+  MAJ --> T --> H[Hotfix] --> V[Validate]
+  T --> C[Change Request] --> P[Plan] --> V
