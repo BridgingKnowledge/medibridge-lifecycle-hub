@@ -2,6 +2,7 @@ site_name: MediBridge Lifecycle Hub
 theme:
   name: material
 nav:
+  - Home: index.md
   - Welcome: 00-intro/welcome.md
   - 01 Business Case: 01-business-case/index.md
   - 02 Regulatory & Stakeholders: 02-regulatory-and-stakeholders/index.md
