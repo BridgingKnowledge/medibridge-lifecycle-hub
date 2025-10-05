@@ -1,0 +1,7 @@
+flowchart LR
+  U[User / Clinician] --> UI[Ultrasound Suite UI]
+  UI --> SVC[Application Service]
+  SVC --> DB[(Clinical DB)]
+  SVC --> AUDIT[(Audit Log)]
+  SVC --> EXPORT[Export Service]
+  EXPORT --> PACS[PACS / External System]

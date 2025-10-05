@@ -12,6 +12,12 @@ Make requirements explicit, testable, and traceable to risk and validation.
 2) Link each REQ to applicable risks (RSK-###)  
 3) Keep a simple overview diagram
 
+## Design overview (Mermaid)
+
+```mermaid
+--8<-- "snippets/design-overview.mmd"
+```
+
 **Artifacts/Links**  
 - Requirements list (product repo): `medibridge-ultrasound-suite/docs/requirements.md`  
 - OpenAPI contract: `medibridge-ultrasound-suite/api/openapi.yaml`

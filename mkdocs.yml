@@ -1,6 +1,39 @@
 site_name: MediBridge Lifecycle Hub
+site_url: https://bridgingknowledge.github.io/medibridge-lifecycle-hub/
+repo_url: https://github.com/BridgingKnowledge/medibridge-lifecycle-hub
+repo_name: GitHub
+edit_uri: edit/main/
+
 theme:
   name: material
+  features:
+    - navigation.instant
+    - navigation.top
+    - navigation.tracking
+    - toc.integrate
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.snippets
+
+plugins:
+  - search
+
+# Hvis du har lagt en lille CSS (kan være tom i starten)
+extra_css:
+  - assets/extra.css
+
+# Mermaid support via CDN + lille init-script der re-initialiserer på sideskift
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - assets/mermaid-init.js
+
 nav:
   - Home: index.md
   - Welcome: 00-intro/welcome.md

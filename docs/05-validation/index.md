@@ -12,6 +12,14 @@ Demonstrate risk-based validation and traceability to requirements and risks.
 2) Execute protocols, handle deviations  
 3) Report results, update traceability
 
+
+## Validation
+
+
+```mermaid
+--8<-- "snippets/validation-flow.mmd"
+```
+
 **Artifacts/Links**  
 - Test plan & traceability matrix: `medibridge-ultrasound-suite/validation/`  
 - Templates: `risk-assessment-templates`

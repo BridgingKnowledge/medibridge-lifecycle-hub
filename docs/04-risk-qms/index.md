@@ -12,6 +12,12 @@ Show risk-based thinking: how risks drive controls, testing depth, and approvals
 2) Select proportionate controls (least privilege, SoD, audit trail)  
 3) Reflect risks in validation scope
 
+## Risk-driven controls (Mermaid)
+
+```mermaid
+--8<-- "snippets/change-triage.mmd"
+```
+
 **Artifacts/Links**  
 - Templates & examples: `risk-assessment-templates`  
 - Worked example (Ultrasound Suite ITRA): `risk-assessment-templates/examples/ultrasound-suite-itra.md`

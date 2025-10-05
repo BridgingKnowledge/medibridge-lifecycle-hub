@@ -139,3 +139,16 @@ At the **bottom of every** `docs/*/index.md`, add this block **once**:
 > • Product & validation: medibridge-ultrasound-suite  
 > • Governance & feedback: medibridge-collaboration-hub  
 > • Templates & examples: risk-assessment-templates
+
+## MkDocs & Mermaid rules
+
+- All navigation paths in `mkdocs.yml` are **relative to `docs/`** (no leading `docs/`).
+- A minimal Home page exists at `docs/index.md` and is first in `nav`.
+- Mermaid is enabled via:
+  - `extra_javascript`: 
+    - `https://unpkg.com/mermaid@10/dist/mermaid.min.js`
+    - `assets/mermaid-init.js`
+  - `markdown_extensions` include `pymdownx.superfences` (and `pymdownx.snippets` if we reuse diagrams).
+- Place diagrams **inside the relevant chapter pages** using:
+  ```mermaid
+  ...diagram...

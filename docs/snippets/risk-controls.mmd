@@ -1,0 +1,8 @@
+flowchart TD
+  R[Risk identified (RSK-###)]
+    --> C[Select control (least privilege, SoD, audit trail)]
+    --> T[Derive test]
+    --> E[Verify effectiveness]
+    --> J{Residual risk acceptable?}
+  J -- No --> R
+  J -- Yes --> Done

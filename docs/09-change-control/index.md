@@ -12,6 +12,12 @@ Ensure changes are assessed, approved, implemented, and verified effectively.
 2) Assess impact, define validation touchpoints  
 3) Implement, verify, and record effectiveness
 
+## Change triage (Mermaid)
+
+```mermaid
+--8<-- "snippets/change-triage.mmd"
+```
+
 **Artifacts/Links**  
 - Collaboration decisions (ADRs): `medibridge-collaboration-hub/docs/decision-log.md`  
 - Validation touchpoints: `medibridge-ultrasound-suite/validation/`
