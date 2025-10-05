@@ -2,21 +2,21 @@ site_name: MediBridge Lifecycle Hub
 theme:
   name: material
 nav:
-  - Welcome: docs/00-intro/welcome.md
-  - 01 Business Case: docs/01-business-case/index.md
-  - 02 Regulatory & Stakeholders: docs/02-regulatory-and-stakeholders/index.md
-  - 03 Requirements & Design: docs/03-requirements-design/index.md
-  - 04 Risk & QMS: docs/04-risk-qms/index.md
-  - 05 Validation: docs/05-validation/index.md
-  - 06 InfoSec & IAM: docs/06-infosec-iam/index.md
-  - 07 Operations & Monitoring: docs/07-operations-monitoring/index.md
-  - 08 Incidents & Deviations: docs/08-incidents-deviations/index.md
-  - 09 Change Control: docs/09-change-control/index.md
-  - 10 Roles & Responsibilities: docs/10-roles-responsibilities/index.md
-  - 11 Supplier Management: docs/11-supplier-management/index.md
-  - 12 Training & Competence: docs/12-training-competence/index.md
-  - 13 Audit & Compliance: docs/13-audit-compliance/index.md
-  - 14 BCP/DRP: docs/14-bcp-drp/index.md
-  - 15 PMS & Complaints: docs/15-pms-complaints/index.md
-  - 16 Continuous Improvement: docs/16-continuous-improvement/index.md
-  - 17 Decommissioning: docs/17-decommissioning/index.md
+  - Welcome: 00-intro/welcome.md
+  - 01 Business Case: 01-business-case/index.md
+  - 02 Regulatory & Stakeholders: 02-regulatory-and-stakeholders/index.md
+  - 03 Requirements & Design: 03-requirements-design/index.md
+  - 04 Risk & QMS: 04-risk-qms/index.md
+  - 05 Validation: 05-validation/index.md
+  - 06 InfoSec & IAM: 06-infosec-iam/index.md
+  - 07 Operations & Monitoring: 07-operations-monitoring/index.md
+  - 08 Incidents & Deviations: 08-incidents-deviations/index.md
+  - 09 Change Control: 09-change-control/index.md
+  - 10 Roles & Responsibilities: 10-roles-responsibilities/index.md
+  - 11 Supplier Management: 11-supplier-management/index.md
+  - 12 Training & Competence: 12-training-competence/index.md
+  - 13 Audit & Compliance: 13-audit-compliance/index.md
+  - 14 BCP/DRP: 14-bcp-drp/index.md
+  - 15 PMS & Complaints: 15-pms-complaints/index.md
+  - 16 Continuous Improvement: 16-continuous-improvement/index.md
+  - 17 Decommissioning: 17-decommissioning/index.md

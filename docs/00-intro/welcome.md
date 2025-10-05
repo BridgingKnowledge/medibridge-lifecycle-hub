@@ -1,5 +1,14 @@
 # Welcome to the MediBridge Lifecycle Hub
 
+# Introduction
+
+Welcome to the MediBridge Lifecycle Hub (v2). This chapter explains the purpose of the hub and how to use the documentation.
+
+> **Related repositories:**  
+> • Product & validation: medibridge-ultrasound-suite  
+> • Governance & feedback: medibridge-collaboration-hub  
+> • Templates & examples: risk-assessment-templates
+
 **Purpose**  
 Give a clear, recruiter-friendly overview of how the portfolio fits together and why the lifecycle approach matters.
 
