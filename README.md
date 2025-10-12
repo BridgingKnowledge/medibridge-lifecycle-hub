@@ -12,7 +12,7 @@
 - **See product & traceability** → `medibridge-ultrasound-suite`
 - **See governance & collaboration flow** → `medibridge-collaboration-hub`
 - **See risk templates & examples** → `risk-assessment-templates`
- - **See governance tools & demos** → `medibridge-governance-lite`
+ - **See governance tools & demos** → [Governance API docs](/gov-api/) (also see `medibridge-governance-lite` on GitHub)
 
 ## What this repository contains
 - `docs/` — lifecycle chapters (one folder per topic)
