@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>GovernanceLite API</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      html, body { height: 100%; margin: 0; }
+      #redoc-container { width: 100%; height: 100vh; }
+    </style>
+  </head>
+  <body>
+    <div id="redoc-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/redoc@next/bundles/redoc.standalone.js"></script>
+    <script>
+      Redoc.init('openapi.json', {}, document.getElementById('redoc-container'));
+    </script>
+  </body>
+</html>
