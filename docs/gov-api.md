@@ -3,14 +3,24 @@ title: Governance API
 nav: Documentation
 ---
 
-This page links to the published Governance API documentation and tools.
+## Governance API
 
-If you want to view the OpenAPI (Redoc) API viewer, open the standalone viewer in a new tab:
+Explore the public Governance API documentation and tools for Governance Lite. The canonical viewer is hosted in the `medibridge-governance-lite` repository.
 
-[Open Governance API viewer (Redoc)](https://bridgingknowledge.github.io/medibridge-governance-lite/gov-api/redoc.html){:target="_blank"}
+<div class="gov-api-cta">
+	<p class="lead">View the API documentation and try endpoints in the Redoc viewer.</p>
+	<p><a class="button" href="https://bridgingknowledge.github.io/medibridge-governance-lite/gov-api/redoc.html" target="_blank" rel="noopener">Open Governance API viewer (Redoc)</a></p>
+</div>
+
+<div class="gov-api-preview">
+	<p class="muted">Preview (desktop only):</p>
+	<iframe src="https://bridgingknowledge.github.io/medibridge-governance-lite/gov-api/redoc.html" style="width:100%;height:60vh;border:1px solid #ddd;display:block;" title="Governance API preview"></iframe>
+</div>
+
+---
 
 Notes
------
-- The Governance API viewer is hosted in the `medibridge-governance-lite` repository and published via GitHub Pages.
-- If you need an embedded view inside this hub, we can copy the viewer assets into this repository instead (requires maintenance).
+
+- The Governance API viewer is maintained in the `medibridge-governance-lite` repository and published via GitHub Pages.
+- If you prefer the viewer embedded permanently in this hub, I can copy the viewer assets here and add automation to keep them synced.
 

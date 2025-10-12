@@ -1,0 +1,10 @@
+/* Governance API CTA styling */
+.gov-api-cta { margin: 1.5rem 0; padding: 1rem; background:#f7f9fc; border-radius:6px; }
+.gov-api-cta .lead { font-size:1.05rem; margin:0 0 0.5rem 0 }
+.gov-api-cta .button { display:inline-block; padding:0.6rem 1rem; background:#2b6cb0; color:#fff; border-radius:4px; text-decoration:none }
+.gov-api-cta .button:hover { background:#245a9a }
+
+/* Preview hidden on smaller screens */
+@media (max-width: 900px) {
+  .gov-api-preview { display:none }
+}
