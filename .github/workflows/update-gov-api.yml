@@ -1,0 +1,55 @@
+name: Update Governance API docs
+
+on:
+  workflow_dispatch:
+    inputs:
+      governance_repo:
+        description: 'Full repo path (owner/repo) for governance project'
+        required: true
+        default: 'BridgingKnowledge/medibridge-governance-lite'
+
+jobs:
+  fetch-openapi:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout this repo
+        uses: actions/checkout@v4
+
+      - name: Checkout governance repo
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.event.inputs.governance_repo }}
+          path: governance
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Build and run governance app
+        working-directory: governance/src/GovernanceLite.Web
+        run: |
+          dotnet build --configuration Release
+          dotnet run --urls http://localhost:5006 &
+          # wait for the app to be ready (simple retry)
+          for i in {1..15}; do
+            if curl -sSf http://localhost:5006/swagger/v1/swagger.json -o /tmp/openapi.json; then
+              break
+            fi
+            sleep 2
+          done
+
+      - name: Copy openapi.json into hub docs
+        run: |
+          mkdir -p docs/gov-api
+          cp /tmp/openapi.json docs/gov-api/openapi.json
+
+      - name: Commit and push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/gov-api/openapi.json
+          git commit -m "Update GovernanceLite OpenAPI snapshot" || echo "No changes to commit"
+          git push
