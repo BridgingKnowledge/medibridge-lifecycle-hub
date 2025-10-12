@@ -71,6 +71,16 @@ This repository is not about building the AI itself. It is about **showing the f
 - Simple flow diagrams under `flows/`
 - Deep links to the “real” artifacts: product repo, collaboration hub, and risk templates
 
+---
+
+## Governance tools & demos
+
+Explore the lightweight governance demo API and supporting modules used in the hub. This repository contains a small ASP.NET Core Minimal API, EF/SQLite demo storage, Swagger documentation, and scaffolded modules (AuditTrail, RiskMatrix, ApiMock, ServiceNowLite) to demonstrate governance workflows.
+
+- Repository: [medibridge-governance-lite](https://github.com/BridgingKnowledge/medibridge-governance-lite)
+- Quick run: see the repo `README.md` (dotnet run → Swagger)
+
+
 **How to navigate**
 1) Start with the chapter you care about (left navigation).
 2) At the bottom of each chapter page, use the **Related repositories** box to jump to the code or templates.
