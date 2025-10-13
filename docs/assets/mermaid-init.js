@@ -8,20 +8,30 @@
   const MERMAID_CDN = 'https://unpkg.com/mermaid@10/dist/mermaid.min.js';
 
   function initMermaidOnce() {
-    console.log('[mermaid-init] initMermaidOnce called - mermaid present?', !!window.mermaid);
-    if (!window.mermaid) return;
+    // Convert fenced/code blocks to <div class="mermaid"> elements so Mermaid can render them
+    try {
+      transformMermaidCodeBlocks();
+    } catch (e) {
+      console.error('[mermaid-init] transform error', e);
+    }
+
+    if (!window.mermaid) {
+      console.warn('[mermaid-init] mermaid not present yet');
+      return;
+    }
+
     try {
       window.mermaid.initialize({ startOnLoad: false });
-      window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid, .mermaid'));
+      // Initialize any .mermaid blocks
+      window.mermaid.init(undefined, document.querySelectorAll('.mermaid'));
       console.log('[mermaid-init] mermaid.init called');
     } catch (e) {
-      // swallow errors - don't break page
+      // don't let mermaid errors break the page
       console.error('[mermaid-init] mermaid init error', e);
     }
   }
 
   function ensureMermaidLoaded(cb) {
-    console.log('[mermaid-init] ensureMermaidLoaded - mermaid present?', !!window.mermaid);
     if (window.mermaid) {
       cb();
       return;
@@ -37,10 +47,8 @@
     const s = document.createElement('script');
     // Cache-bust to avoid stale CDN cache during quick iterations
     s.src = MERMAID_CDN + '?_=' + Date.now();
-    // load synchronously (no defer) to improve chance that mermaid is available when we run
     s.async = false;
     s.onload = () => {
-      console.log('[mermaid-init] mermaid script loaded');
       cb();
     };
     s.onerror = () => { console.warn('[mermaid-init] Failed to load Mermaid from CDN'); };
@@ -53,6 +61,37 @@
     } catch (e) {
       console.error('[mermaid-init] run error', e);
     }
+  }
+
+  // Helper: find code blocks with language-mermaid and replace them with div.mermaid
+  function transformMermaidCodeBlocks() {
+    // Select code elements commonly used for fenced mermaid code
+    const codes = Array.from(document.querySelectorAll('code.language-mermaid'));
+    codes.forEach((code) => {
+      // Avoid re-processing
+      const parent = code.parentElement;
+      const already = parent && (parent.classList && parent.classList.contains('mermaid')) || code.dataset.mermaidProcessed;
+      if (already) return;
+
+      // Extract the raw diagram text. Use textContent to avoid HTML-escaped entities.
+      let text = code.textContent || '';
+      text = text.replace(/^```\w*\n?|\n?```$/g, '').trim();
+
+      // Create a container div.mermaid and put the diagram text as textContent (not innerHTML)
+      const div = document.createElement('div');
+      div.className = 'mermaid';
+      div.textContent = text;
+
+      // If the code is wrapped in a <pre>, replace the pre; otherwise replace the code node
+      if (parent && parent.tagName && parent.tagName.toLowerCase() === 'pre') {
+        parent.parentNode.replaceChild(div, parent);
+      } else {
+        code.parentNode.replaceChild(div, code);
+      }
+
+      // Mark as processed in case dynamic nav re-inserts similar nodes
+      div.dataset.mermaidProcessed = '1';
+    });
   }
 
   if (window.document$ && typeof document$.subscribe === 'function') {
