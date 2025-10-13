@@ -4,19 +4,33 @@
 To map all applicable regulations and standards into concrete system requirements and ensure stakeholder needs are captured and traceable.
 
 ## 📜 Regulatory applicability
-- **EU (Denmark/EU)**:
-  - MDR 2017/745 (medical devices) or IVDR 2017/746 (IVDs).
-  - DKMA as competent authority; CE marking via notified body.
-  - GDPR: DPIA, lawful basis, audit trail, data subject rights.
-  - Standards: ISO 13485 (QMS), ISO 14971 (risk), IEC 62304 (software lifecycle), IEC 62366‑1 (usability), ISO/IEC 27001 (infosec).
-- **US (FDA)**:
-  - 21 CFR Part 820 (QSR/design controls).
-  - 21 CFR Part 11 (electronic records/signatures).
-  - HIPAA for PHI.
-  - FDA Human Factors guidance; IEC 62304 accepted.
-- **GxP environments**:
-  - GAMP 5 category assessment.
-  - Supplier audits, configuration vs customization controls.
+This section outlines the regulatory strategy and requirements for the AI-enabled ultrasound device, assuming commercialization in both the European Union (under MDR) and the United States (under FDA regulations).
+
+## EU Compliance
+
+- Device regulated under **EU MDR (Regulation (EU) 2017/745)**
+- Likely classification: **Class IIa/IIb**
+- Software component is regulated as **Software as a Medical Device (SaMD)**
+- Documentation includes:
+  - MDR classification rationale
+  - GSPR checklist (Annex I)
+  - References to harmonized standards: ISO 13485, ISO 14971, IEC 62304, etc.
+
+## US Compliance
+
+- Device regulated by the **FDA under 21 CFR**
+- Likely **Class II**, requiring a **510(k)** submission
+- Software reviewed under **FDA SaMD and CDS guidance**
+- Includes discussion of:
+  - Classification rationale and predicate device (if applicable)
+  - Software documentation (per FDA guidance)
+  - QSR compliance (21 CFR Part 820)
+
+## Bridging and Harmonization
+
+- Common standards across regions
+- Alignment with IMDRF principles for SaMD and risk categorization
+- Cybersecurity and clinical evaluation harmonization
 
 ## 👥 Stakeholder map
 - **Clinicians**: Usability, workflow fit, UAT.
