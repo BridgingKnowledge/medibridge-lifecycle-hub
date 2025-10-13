@@ -39,6 +39,9 @@ nav:
   - Welcome: 00-intro/welcome.md
   - 01 Business Case: 01-business-case/index.md
   - 02 Regulatory & Stakeholders: 02-regulatory-and-stakeholders/index.md
+    - GSPR Checklist: 02-regulatory-and-stakeholders/gspr-checklist.md
+    - MDR Classification: 02-regulatory-and-stakeholders/mdr-classification.md
+    - EU Regulatory Details: 02-regulatory-and-stakeholders/eu-regulatory.md
   - 03 Requirements & Design: 03-requirements-design/index.md
   - 04 Risk & QMS: 04-risk-qms/index.md
   - 05 Validation: 05-validation/index.md
