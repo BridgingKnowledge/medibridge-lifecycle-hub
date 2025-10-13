@@ -54,8 +54,96 @@ This assessment defines the cybersecurity governance framework, risks, and mitig
 | Downtime due to DDoS or network outage | Medium | Medium | **Medium** | Cloud redundancy, CDN failover |
 
 ---
+## 5. Cybersecurity Architecture Overview
 
-## 5. Technical Controls Overview
+```mermaid
+flowchart TD
+    subgraph A[Clinical Environment]
+        Ultrasound[Edge Ultrasound Device]
+        UserClinician[Clinician Workstation]
+    end
+
+    subgraph B[Cloud Processing Layer]
+        Gateway[Secure API Gateway]
+        AI[AI Image Triage Engine]
+        Archive[Encrypted Archive Storage]
+    end
+
+    subgraph C[Security Services]
+        IAM[Identity & Access Management]
+        SIEM[Monitoring & Threat Detection]
+        Logs[Audit Logging System]
+    end
+
+    Ultrasound -- Encrypted Upload (TLS) --> Gateway
+    Gateway --> AI
+    AI --> Archive
+
+    Archive --> UserClinician
+    IAM --> Gateway
+    IAM --> UserClinician
+    IAM --> Ultrasound
+
+    AI --> Logs
+    Gateway --> Logs
+    IAM --> Logs
+
+    Logs --> SIEM
+
+    style AI fill:#eef,stroke:#555,stroke-width:1px
+    style IAM fill:#ffc,stroke:#333,stroke-width:1px
+    style SIEM fill:#fdd,stroke:#d00,stroke-width:1px
+```
+### Diagram Highlights
+
+- **Ultrasound Device**:
+  - Uploads image data over secure TLS
+  - Authenticated via IAM
+
+- **API Gateway**:
+  - Enforces encryption, rate limiting, and authentication
+
+- **AI Triage Engine**:
+  - Processes and classifies image data
+  - Outputs either archived (no-findings) or flagged (suspicious) data
+
+- **IAM**:
+  - Central access control for all users/devices/services
+  - Role-based with MFA where applicable
+
+- **Audit Logs + SIEM**:
+  - Every transaction is logged
+  - Logs feed into threat detection system for anomaly analysis
+---
+## 6. Data Classification Schema
+
+This classification aligns with ISO/IEC 27001 and supports appropriate protection measures under NIS2, GDPR, and MDR Annex I (17.2).
+
+| Data Type | Description | Classification | Protection Measures |
+|-----------|-------------|-----------------|---------------------|
+| Patient Imaging Data | Ultrasound scans | **Highly Sensitive** | Encrypted in transit (TLS 1.3), encrypted at rest (AES-256) |
+| Triage Output | AI classification metadata (e.g., "no findings", "suspicious") | **Sensitive** | Access control via IAM, audit logging |
+| User Credentials | Clinician/admin login info | **Confidential** | Password hashing, MFA, secure vault |
+| Access Logs | User and system access events | **Internal Only** | Immutable logs, retention policy |
+| Configuration Files | AI engine parameters, DICOM settings | **Internal** | Version-controlled, access-limited |
+| System Health Metrics | CPU, RAM, job logs | **Internal (Operational)** | Monitoring only, no PHI |
+
+## 7. Role-Based Access Control (RBAC) Matrix
+
+This access control model enforces least privilege principles and traceability across all system roles.
+
+| Role | Description | System Access | Data Access | Security Restrictions |
+|------|-------------|---------------|-------------|------------------------|
+| **Clinician** | Reviews flagged images | Web Interface | Patient Imaging, Triage Results | View-only; cannot export raw data |
+| **Radiologist Reviewer** | Final decision-maker | Web Portal + Annotator Tool | Full Image + Report | Requires MFA |
+| **System Admin** | Manages system config | All infrastructure layers | Logs, config files | No access to imaging data |
+| **AI Engineer** | Maintains model + updates | AI Engine, Config, Logs | Anonymized Triage Data | No access to patient info |
+| **IT Support** | Device and network support | Hardware + Gateway | Logs only | Read-only; no data transfer rights |
+| **Security Auditor** | Reviews access, anomalies | SIEM + Audit Logs | Logs, Access Events | Restricted by time-limited token |
+| **Data Protection Officer (DPO)** | GDPR oversight | Logs + Access Policies | User roles, breach reports | No direct system control |
+---
+
+## 8. Technical Controls Overview
 
 | Control Category | Framework Reference | Implementation |
 |------------------|--------------------|----------------|
@@ -69,7 +157,7 @@ This assessment defines the cybersecurity governance framework, risks, and mitig
 
 ---
 
-## 6. Governance and Reporting
+## 9. Governance and Reporting
 
 - **CISO (Chief Information Security Officer)**: Responsible for NIS2 compliance and reporting to authorities.
 - **Incident Notification Timeline**:
@@ -80,7 +168,7 @@ This assessment defines the cybersecurity governance framework, risks, and mitig
 
 ---
 
-## 7. Continuous Improvement
+## 10. Continuous Improvement
 
 - NIS2 readiness is reviewed quarterly during **Management Review Meetings**.
 - Cyber maturity levels are tracked against **ENISA NIS2 compliance framework**.
