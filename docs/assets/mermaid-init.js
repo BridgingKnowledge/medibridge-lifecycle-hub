@@ -65,33 +65,56 @@
 
   // Helper: find code blocks with language-mermaid and replace them with div.mermaid
   function transformMermaidCodeBlocks() {
-    // Select code elements commonly used for fenced mermaid code
+    // Primary: Select code elements commonly used for fenced mermaid code
     const codes = Array.from(document.querySelectorAll('code.language-mermaid'));
-    codes.forEach((code) => {
-      // Avoid re-processing
-      const parent = code.parentElement;
-      const already = parent && (parent.classList && parent.classList.contains('mermaid')) || code.dataset.mermaidProcessed;
-      if (already) return;
+    codes.forEach((code) => convertCodeToMermaid(code));
 
-      // Extract the raw diagram text. Use textContent to avoid HTML-escaped entities.
-      let text = code.textContent || '';
-      text = text.replace(/^```\w*\n?|\n?```$/g, '').trim();
-
-      // Create a container div.mermaid and put the diagram text as textContent (not innerHTML)
-      const div = document.createElement('div');
-      div.className = 'mermaid';
-      div.textContent = text;
-
-      // If the code is wrapped in a <pre>, replace the pre; otherwise replace the code node
-      if (parent && parent.tagName && parent.tagName.toLowerCase() === 'pre') {
-        parent.parentNode.replaceChild(div, parent);
-      } else {
-        code.parentNode.replaceChild(div, code);
+    // Secondary: Some renderers (or GitHub Pages pipelines) emit plain <pre><code> without a language class.
+    // Detect plain code blocks whose text begins with mermaid grammar keywords and convert them too.
+    const possible = Array.from(document.querySelectorAll('pre > code'));
+    const mermaidStarters = /^(?:graph|flowchart|sequenceDiagram|classDiagram|gantt|stateDiagram|journey|gitGraph)\b/i;
+    possible.forEach((code) => {
+      // Skip if already handled via language-mermaid or marked
+      if (code.classList && code.classList.length) return;
+      if (code.dataset && code.dataset.mermaidProcessed) return;
+      const text = (code.textContent || '').trim();
+      if (!text) return;
+      if (mermaidStarters.test(text.split('\n', 1)[0])) {
+        console.log('[mermaid-init] detected unlabeled mermaid code block, converting');
+        convertCodeToMermaid(code);
       }
-
-      // Mark as processed in case dynamic nav re-inserts similar nodes
-      div.dataset.mermaidProcessed = '1';
     });
+
+    function convertCodeToMermaid(code) {
+      try {
+        // Avoid re-processing
+        const parent = code.parentElement;
+        const already = parent && (parent.classList && parent.classList.contains('mermaid')) || code.dataset.mermaidProcessed;
+        if (already) return;
+
+        // Extract the raw diagram text. Use textContent to avoid HTML-escaped entities.
+        let text = code.textContent || '';
+        // Strip fence markers if present and normalize whitespace
+        text = text.replace(/^```\w*\n?|\n?```$/g, '').trim();
+
+        // Create a container div.mermaid and put the diagram text as textContent (not innerHTML)
+        const div = document.createElement('div');
+        div.className = 'mermaid';
+        div.textContent = text;
+
+        // If the code is wrapped in a <pre>, replace the pre; otherwise replace the code node
+        if (parent && parent.tagName && parent.tagName.toLowerCase() === 'pre') {
+          parent.parentNode.replaceChild(div, parent);
+        } else if (code.parentNode) {
+          code.parentNode.replaceChild(div, code);
+        }
+
+        // Mark as processed in case dynamic nav re-inserts similar nodes
+        div.dataset.mermaidProcessed = '1';
+      } catch (err) {
+        console.error('[mermaid-init] convertCodeToMermaid error', err);
+      }
+    }
   }
 
   if (window.document$ && typeof document$.subscribe === 'function') {
