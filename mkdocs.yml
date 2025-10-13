@@ -43,6 +43,10 @@ nav:
   - 04 Risk & QMS: 04-risk-qms/index.md
   - 05 Validation: 05-validation/index.md
   - 06 InfoSec & IAM: 06-infosec-iam/index.md
+    - NIS2 Cybersecurity Impact Review: 06-infosec-iam/nis2-risk-review.md
+    - IAM Role Matrix: 06-infosec-iam/iam-role-matrix.md
+    - Cybersecurity Policy Overview: 06-infosec-iam/cyber-policy.md
+    - Audit & Logging Requirements: 06-infosec-iam/audit-logging.md
   - 07 Operations & Monitoring: 07-operations-monitoring/index.md
   - 08 Incidents & Deviations: 08-incidents-deviations/index.md
   - 09 Change Control: 09-change-control/index.md

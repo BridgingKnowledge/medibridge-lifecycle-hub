@@ -121,10 +121,10 @@ The system and its operator may fall under **NIS2 obligations** if:
 
 ## 📌 Linked Documents
 
-- [GSPR Checklist](../docs/02-regulatory-and-stakeholders/gspr-checklist.md)
-- [MDR Classification Justification](../docs/02-regulatory-and-stakeholders/mdr-classification.md)
-- [NIS2 Threat & Risk Assessment](../docs/06-infosec-iam/nis2-risk-review.md)
-- [GAMP5 Validation Plan](../docs/05-validation/software-validation-plan.md)
+- [GSPR Checklist](../02-regulatory-and-stakeholders/gspr-checklist.md)
+- [MDR Classification Justification](../02-regulatory-and-stakeholders/mdr-classification.md)
+- [NIS2 Threat & Risk Assessment](../06-infosec-iam/nis2-risk-review.md)
+- [GAMP5 Validation Plan](../05-validation/software-validation-plan.md)
 
 ---
 

@@ -78,7 +78,7 @@ This repository is not about building the AI itself. It is about **showing the f
 Explore the lightweight governance demo API and supporting modules used in the hub. This repository contains a small ASP.NET Core Minimal API, EF/SQLite demo storage, Swagger documentation, and scaffolded modules (AuditTrail, RiskMatrix, ApiMock, ServiceNowLite) to demonstrate governance workflows.
 
 - Repository: [medibridge-governance-lite](https://github.com/BridgingKnowledge/medibridge-governance-lite)
-- API docs (static): [GovernanceLite API viewer](/gov-api/) — rendered from a stored OpenAPI snapshot in this hub
+-- API docs (static): [GovernanceLite API viewer](../gov-api.md) — rendered from a stored OpenAPI snapshot in this hub
 - Quick run: see the repo `README.md` (dotnet run → Swagger)
 
 
