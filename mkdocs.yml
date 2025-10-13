@@ -42,7 +42,8 @@ nav:
   - 03 Requirements & Design: 03-requirements-design/index.md
   - 04 Risk & QMS: 04-risk-qms/index.md
   - 05 Validation: 05-validation/index.md
-  - 06 InfoSec & IAM: 06-infosec-iam/index.md
+  - 06 InfoSec & IAM:
+    - Overview: 06-infosec-iam/index.md
     - NIS2 Cybersecurity Impact Review: 06-infosec-iam/nis2-risk-review.md
     - IAM Role Matrix: 06-infosec-iam/iam-role-matrix.md
     - Cybersecurity Policy Overview: 06-infosec-iam/cyber-policy.md
